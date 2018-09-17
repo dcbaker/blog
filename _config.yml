@@ -1,10 +1,10 @@
 # Site settings
-title:       Pixyll
-email:       your_email@example.com
-author:      John Otander
-description: "A simple, beautiful theme for Jekyll that emphasizes content rather than aesthetic fluff."
+title:       Dylan's Blog
+email:       dylan@pnwbakers.com
+author:      Dylan Baker
+description: "A place that I write about things I'm doing"
 baseurl:     ""
-url:         "http://pixyll.com"
+url:         "https://dcbaker.github.io"
 date_format: "%b %-d, %Y"
 header_pages:
  - about.md
@@ -51,7 +51,7 @@ facebook_appid:
 facebook_comments_number: 10
 
 # Social icons
-github_username:
+github_username: dcbaker
 reddit_username:
 bitbucket_username:
 stackoverflow_id:
