@@ -108,4 +108,4 @@ Windows work is ongoing, but I'm hopeful that it can be in shape to drop scons
 in 2019 as well. Hopefully next year will be the year we delete scons as well.
 Then we just need to get the android thing figured out.
 
-{% license https://creativecommons.org/licenses/by-sa/4.0/ %}
+{% include cc-by-sa-4_0.html %}
