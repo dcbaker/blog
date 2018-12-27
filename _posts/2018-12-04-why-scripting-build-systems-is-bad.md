@@ -7,8 +7,6 @@ categories:
  - meson
 ---
 
-# Why User Defined Functions and Macros are Bad
-
 This is hopefully going to be a short post about why meson insists that you fix
 bugs in meson itself, and not in your local scripts like many other build
 systems do.
@@ -18,7 +16,7 @@ to: autotools and cmake. Both of these languages have a scripting language,
 autotools has the m4 macro language, and cmake has the cmake language.
 
 [m4](https://en.wikipedia.org/wiki/M4_(computer_language)) is an old macro
-processing language, it's difficult to debug and understand, not unless you do
+processing language, it's difficult to debug and understand, and unless you do
 a lot of autoconf you probably don't know anything about it. If you've seen an
 autotools project, you've probably seen a folder called m4 with a bunch of
 ax\_\*.m4 files in it. These are macro definitions that are used in the
@@ -55,14 +53,18 @@ each of them different, and each of them broken in different ways.
 
 ## Missing Code Sharing
 
-We can as programmers all agree that sharing and reusing code is (generally)
+We can, as programmers, all agree that sharing and reusing code is (generally)
 better than not sharing and reusing code. This is why we have libraries. While
-some heavily make use of vendoring to keep their own altered copies of
-libraries in their source tree, most of us realize this is a bad practice, we
-don't want a copy of zlib or openssl in our source tree, we want to keep
-getting fixes from upstream. Shared scripts have the same problem, when the
-code is in the core build system everyone gets to use and enjoy it without the
-burden of maintaining it directly.
+some projects heavily make use of
+[vendoring](https://stackoverflow.com/questions/26217488/what-is-vendoring) to
+keep their own altered copies of libraries in their source tree. Most of us
+realize this is a bad practice, we don't want a copy of zlib or openssl in our
+source tree, we want to keep getting fixes from upstream. Shared scripts have
+the same problem, when the code is in the core build system everyone gets to
+use and enjoy it without the burden of maintaining it directly. It further
+benefits people implementing build systems that may be used on platforms they
+don't use (like Windows or macOS) because there are people working on upstream
+that do have those systems.
 
 We can take mesa as an example. Mesa has 156 lines of macros for dealing with
 llvm-config in configure.ac. Some of this works around different brokenness in
@@ -76,6 +78,7 @@ anyone who wants to use LLVM as a dependency can simply say:
 dep_llvm = dependency('llvm')
 ```
 
-and things just work.
+and things just work. And those 156 lines only work on Linux, *BSD, and macOS;
+meson's work on windows.
 
 {% include cc-by-sa-4_0.html %}
