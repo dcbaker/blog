@@ -1,7 +1,7 @@
 ---
 layout:  post
 title:   Why you don't want user defined functions and macros in your build system
-date:    2019-12-04
+date:    2018-12-04
 summary: Nothing good comes of it
 categories:
  - meson
